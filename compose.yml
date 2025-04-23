@@ -20,7 +20,11 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./public:/var/www/html
+      - .:/var/www/html
+      # - ./public:/var/www/html
+      # - ./vendor:/var/www/vendor
+      # - ./.env:/var/www/.env
+      # - ./src:/var/www/src
     depends_on:
       - php
 
