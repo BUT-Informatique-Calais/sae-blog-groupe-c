@@ -11,7 +11,7 @@ RUN a2enmod rewrite
 
 # Copier les fichiers du projet dans le conteneur
 WORKDIR /var/www/html
-COPY . /var/www/html
+COPY . /var/www/html/
 
 # Installer les dépendances avec Composer
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
