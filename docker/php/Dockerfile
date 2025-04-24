@@ -22,6 +22,6 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 RUN docker-php-ext-install pdo_mysql
 
-RUN php bin/console doctrine:migrations:migrate --no-interaction
+# RUN php bin/console doctrine:migrations:migrate --no-interaction
 # WORKDIR /var/www/html
 # RUN composer install --no-interaction
