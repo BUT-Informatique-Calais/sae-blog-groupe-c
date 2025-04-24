@@ -43,6 +43,20 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  mailpit:
+    image: axllent/mailpit:latest
+    container_name: mailpit
+    ports:
+      - "8025:8025" # Interface web de Mailpit
+      - "1025:1025" # Port SMTP pour envoyer des emails
+
+  node:
+    image: node:18
+    container_name: blog-node
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    command: sh -c "npm install && tail -f /dev/null"
 
 volumes:
   db_data:

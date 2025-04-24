@@ -7,7 +7,11 @@ RUN docker-php-ext-install pdo pdo_mysql
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Activer le module rewrite d'Apache
-RUN a2enmod rewrite
+RUN a2enmod rewrite proxy proxy_fcgi
+
+COPY docker/apache/conf/my-vhost.conf /etc/apache2/sites-available/my-vhost.conf
+RUN a2ensite my-vhost.conf
+
 
 # Copier les fichiers du projet dans le conteneur
 WORKDIR /var/www/html
